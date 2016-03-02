@@ -78,7 +78,8 @@ RUN cd /tmp && \
     php composer-setup.php && \
     rm  composer-setup.php && \
     mv composer.phar /usr/local/bin/composer && \
-    chmod +x /usr/local/bin/composer
+    chmod +rx /usr/local/bin/composer && \
+    chmod +rx /usr/local/bin/wp-cli
 
 ##
 # Add Project files like nginx and php-fpm processes and configs
