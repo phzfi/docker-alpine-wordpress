@@ -1,4 +1,6 @@
 # Lightweight WordPress PHP-FPM & Nginx Docker Image
+[![nodesource/node](http://dockeri.co/image/devgeniem/alpine-wordpress)](https://registry.hub.docker.com/u/devgeniem/alpine-wordpress/)
+
 This is maintained repository. We use this project in production and recommend this for your projects too.
 
 ## Aren't you only supposed to run one process per container?
