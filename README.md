@@ -40,13 +40,13 @@ Remember to set `DB_NAME`, `DB_PASSWORD` and `DB_USER` and use these variables i
 SMTP_HOST
 ```
 
-This variable changes the host where container tries to send mail from. By default this is docker host ```172.17.0.1```.
+This variable changes the host where container tries to send mail from. By default this is docker host `172.17.0.1`.
 
 ```
 SMTP_PORT
 ```
 
-This variable changes the port where container tries to connect in order to send mail. By default this is default smtp-port ```25```.
+This variable changes the port where container tries to connect in order to send mail. By default this is `25`.
 
 ```
 SMTP_TLS
