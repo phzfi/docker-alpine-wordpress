@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+##
+# Phinx wrapper
+# You need to install phinx through composer first
+##
+
+php $WP_PROJECT/vendor/bin/phinx

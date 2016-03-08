@@ -86,6 +86,8 @@ ENV TERM="xterm" \
     DB_NAME="" \
     DB_USER=""\
     DB_PASSWORD=""\
+    # This is for your project root
+    PROJECT_ROOT="/data/code"\
     # This is used by nginx and php-fpm
     WEB_ROOT="/data/code/web"\
     # This is used automatically by wp-cli
