@@ -81,8 +81,8 @@ RUN cd /tmp && \
 ADD system-root/ /
 
 ENV TERM="xterm" \
-    DB_HOST="172.17.0.1" \
-    DB_PORT="3306" \
+    DB_HOST="" \
+    DB_PORT="" \
     DB_NAME="" \
     DB_USER=""\
     DB_PASSWORD=""\

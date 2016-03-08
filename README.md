@@ -28,8 +28,8 @@ This is the place where nginx will serve requests. This is compatible with [bedr
 DB_NAME     # Default: ''
 DB_PASSWORD # Default: ''
 DB_USER     # Default: ''
-DB_HOST     # Default: '172.17.0.1' (the docker host machine)
-DB_PORT     # Default: '3306'
+DB_HOST     # Default: ''
+DB_PORT     # Default: ''
 ```
 
 Remember to set `DB_NAME`, `DB_PASSWORD` and `DB_USER` and use these variables in your wp-config.php. These are automatically added as envs in php context.
