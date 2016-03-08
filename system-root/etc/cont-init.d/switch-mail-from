@@ -1,18 +1,35 @@
 #!/usr/bin/with-contenv sh
 ##
-# This script changes envelope-from setting for mailing binary msmtp
+# Php uses msmtp binary to send email
+# This script changes /etc/msmtprc settings to change the used server
+# Typically you can configure 1 postfix which can send email from all containers
 ##
 
-if [ -n "$MAIL_SENDER" ]; then
-  mail_replace=$MAIL_SENDER
-elif [ -n "$MAIL_DOMAIN" ]; then
-  mail_replace="no-reply@$MAIL_DOMAIN"
+# Replace msmtp 'from' field
+if [ -n "$SMTP_FROM" ]; then
+  sed -i "s/^from.*$/from $SMTP_FROM/g" /etc/msmtprc
 elif [ wp core is-installed ]; then
-  mail_replace="no-reply@$(wp option get siteurl|sed 's/https\?:\/\///')"
-else
-  echo "ERROR: MAIL_SENDER or MAIL_DOMAIN variable is not set. Mail won't work until then." 1>&2
-  exit 100
+  # If SMTP_FROM was not setupped try to ask the domain from wordpress
+  $smtp_from="no-reply@$(wp option get siteurl | sed 's/https\?:\/\///')"
+  sed -i "s/^from.*$/from $smtp_from/g" /etc/msmtprc
 fi
 
-# Change mail sender according to domain
-sed -i "s/^from.*$/from $mail_replace/g" /etc/msmtprc
+# Replace msmtp 'host' field
+if [ -n "$SMTP_HOST" ]; then
+  sed -i "s/^host.*$/host $SMTP_HOST/g" /etc/msmtprc
+fi
+
+# Replace msmtp 'port' field
+if [ -n "$SMTP_PORT" ]; then
+  sed -i "s/^port.*$/port $SMTP_PORT/g" /etc/msmtprc
+fi
+
+# Replace msmtp 'tls' field, possible fields on/off
+if [ -n "$SMTP_TLS" ]; then
+  sed -i "s/^tls.*$/tls $SMTP_TLS/g" /etc/msmtprc
+fi
+
+# Replace msmtp 'tls' field
+if [ -n "$SMTP_AUTH" ]; then
+  sed -i "s/^auth.*$/auth $SMTP_TLS/g" /etc/msmtprc
+fi

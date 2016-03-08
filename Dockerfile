@@ -26,7 +26,7 @@ RUN apk update \
 
 # php7 depracates following packages: php-apcu php-mysql php-iconv
 # Install php 7
-RUN apk add php7 php7-fpm php7-json php7-zlib php7-xml php7-pdo php7-phar php7-openssl \
+RUN apk add php7 php7-session php7-fpm php7-json php7-zlib php7-xml php7-pdo php7-phar php7-openssl \
     php7-pdo_mysql php7-mysqli php7-mysqlnd \
     php7-gd php7-mcrypt \
     php7-curl php7-opcache php7-ctype  \
@@ -47,13 +47,6 @@ RUN cd /tmp && \
     mv phantomjs-2.1.1-linux-x86_64/bin/phantomjs /usr/local/bin/phantomjs && \
     chmod +x /usr/local/bin/phantomjs && \
     rm -r /tmp/*
-
-##
-# Install ruby + poltergeist
-##
-RUN apk add ruby ruby-nokogiri ruby-json build-base ruby-dev && \
-    gem install rspec rspec-retry poltergeist capybara --no-ri --no-rdoc && \
-    apk del build-base ruby-dev
 
 # Add S6-overlay to use S6 process manager
 # https://github.com/just-containers/s6-overlay/#the-docker-way
@@ -89,10 +82,14 @@ ADD system-root/ /
 
 ENV TERM="xterm" \
     DB_HOST="172.17.0.1" \
+    DB_PORT="3306" \
     DB_NAME="" \
     DB_USER=""\
     DB_PASSWORD=""\
-    WP_CORE="/data/code/htdocs/wp"
+    # This is used by nginx and php-fpm
+    WEB_ROOT="/data/code/web"\
+    # This is used automatically by wp-cli
+    WP_CORE="/data/code/web/wp"
 
 # Remove cache and tmp files
 RUN rm -rf /var/cache/apk/* && \
