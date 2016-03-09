@@ -52,13 +52,21 @@ This variable changes the port where container tries to connect in order to send
 SMTP_TLS
 ```
 
-If this is `on` mail will use secure connections to smtp server. Default: `off`
+If this is provided use username in authenticating to mail server. Default: null
+```
+SMTP_USER
+```
 
+If this is provided use password in authenticating to mail server. Default: null
+```
+SMTP_PASSWORD
+```
+
+If this is `on` mail will use username/password authentication in connections to smtp server.
+This will automatically activate if you use `SMTP_USER` and `SMTP_PASSWORD`. Default: `off`
 ```
 SMTP_AUTH
 ```
-
-If this is `on` mail will use authentication when connecting to external smtp. Default: `off`
 
 See more about these variables in [msmtp docs](http://msmtp.sourceforge.net/doc/msmtp.html#Authentication).
 
