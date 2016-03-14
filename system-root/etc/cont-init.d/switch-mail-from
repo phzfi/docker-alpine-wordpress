@@ -26,7 +26,7 @@ fi
 
 # Replace msmtp 'tls' field, possible fields on/off
 if [ -n "$SMTP_TLS" ]; then
-  sed -i "s/^tls.*$/tls $SMTP_TLS/g" /etc/msmtprc
+  sed -i "s/^tls.*$/tls on/g" /etc/msmtprc
 fi
 
 # Use user for authenticating if it's provided
@@ -42,7 +42,5 @@ fi
 # Replace msmtp 'auth' field when provided
 # And also when both password and username are given
 if [ -n "$SMTP_AUTH" ]; then
-  sed -i "s/^auth.*$/auth $SMTP_TLS/g" /etc/msmtprc
-elif [ -n "$SMTP_PASSWORD"] && [ -n "$SMTP_PASSWORD"]; then
   sed -i "s/^auth.*$/auth on/g" /etc/msmtprc
 fi
