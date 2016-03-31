@@ -10,15 +10,22 @@ if ($real_host = '') {
   set $real_host $http_host;
 }
 
-set $real_port $http_x_forwarded_port;
-if ($real_host = '') {
-  set $real_port $server_port;
+# Set server port according to forwarded proto
+set $real_port 80;
+if ($http_x_forwarded_proto = 'https') {
+  set $real_port 443;
 }
 
 # Set https according to used proto
 set $real_https off;
 if ($http_x_forwarded_proto = 'https') {
   set $real_https on;
+}
+
+# Set scheme according to used proto
+set $real_scheme 'http';
+if ($http_x_forwarded_proto = 'https') {
+  set $real_scheme 'https';
 }
 
 # Set original remote
@@ -51,6 +58,7 @@ fastcgi_param  SERVER_ADDR        $server_addr;
 fastcgi_param  SERVER_PORT        $real_port;
 fastcgi_param  SERVER_NAME        $real_host;
 fastcgi_param  HTTPS              $real_https;
+fastcgi_param  REQUEST_SCHEME     $real_scheme;
 fastcgi_param  HTTP_HOST          $real_host;
 
 # PHP only, required if PHP was built with --enable-force-cgi-redirect
