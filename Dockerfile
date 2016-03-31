@@ -17,7 +17,7 @@ MAINTAINER Onni Hakala - Geniem Oy. <onni.hakala@geniem.com>
 
 # Install php + nginx
 RUN apk update \
-    && apk add bash less vim nano git mysql-client nginx ca-certificates \
+    && apk add bash less vim nano git mysql-client nginx ca-certificates openssh-client \
     # Libs for php
     libssh2 curl libpng freetype libjpeg-turbo libgcc libxml2 libstdc++ icu-libs libltdl libmcrypt \
     # For mails
@@ -30,7 +30,7 @@ RUN apk add php7 php7-session php7-fpm php7-json php7-zlib php7-xml php7-pdo php
     php7-pdo_mysql php7-mysqli php7-mysqlnd \
     php7-gd php7-mcrypt \
     php7-curl php7-opcache php7-ctype  \
-    php7-intl php7-bcmath php7-dom php7-xmlreader --update-cache --repository http://dl-4.alpinelinux.org/alpine/edge/testing/ 
+    php7-intl php7-bcmath php7-dom php7-xmlreader --update-cache --repository http://dl-4.alpinelinux.org/alpine/edge/testing/
 
 ##
 # Install PhantomJS
