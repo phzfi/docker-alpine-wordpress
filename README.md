@@ -84,3 +84,6 @@ See more about these variables in [msmtp docs](http://msmtp.sourceforge.net/doc/
 - poltergeist
 - rspec
 - capybara
+
+### Other
+- ssh client
