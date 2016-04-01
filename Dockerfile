@@ -1,35 +1,19 @@
-FROM alpine:edge
+FROM alpine:latest
 MAINTAINER Onni Hakala - Geniem Oy. <onni.hakala@geniem.com>
 
-#php5.6
-## Install php + nginx
-#RUN apk update \
-#    && apk add bash less vim nano git mysql-client nginx ca-certificates \
-#    # PHP 5.6
-#    php php-fpm php-json php-zlib php-xml php-pdo php-phar php-openssl \
-#    php-pdo_mysql php-mysqli \
-#    php-gd php-mcrypt \
-#    php-curl php-opcache php-ctype  \
-#    php-intl php-bcmath php-dom php-xmlreader php-apcu php-mysql php-iconv \
-#    # Libs for php
-#    libssh2 curl libpng freetype libjpeg-turbo libgcc libxml2 libstdc++ icu-libs libltdl libmcrypt \
-#    && apk add -u musl
-
-# Install php + nginx
-RUN apk update \
-    && apk add bash less vim nano git mysql-client nginx ca-certificates openssh-client \
+# Install dependencies
+RUN apk update && \
+    apk add bash less vim nano git mysql-client nginx ca-certificates openssh-client \
     # Libs for php
     libssh2 curl libpng freetype libjpeg-turbo libgcc libxml2 libstdc++ icu-libs libltdl libmcrypt \
     # For mails
     msmtp \
     && apk add -u musl
 
-# php7 depracates following packages: php-apcu php-mysql php-iconv
 # Install php 7
 RUN apk add php7 php7-session php7-fpm php7-json php7-zlib php7-xml php7-pdo php7-phar php7-openssl \
-    php7-pdo_mysql php7-mysqli php7-mysqlnd \
-    libwebp php7-gd php7-mcrypt \
-    php7-curl php7-opcache php7-ctype  \
+    php7-pdo_mysql php7-mysqli php7-mysqlnd php7-mcrypt \
+    php7-gd php7-curl php7-opcache php7-ctype \
     php7-intl php7-bcmath php7-dom php7-xmlreader --update-cache --repository http://dl-4.alpinelinux.org/alpine/edge/testing/
 
 ##
