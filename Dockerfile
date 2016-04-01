@@ -28,7 +28,7 @@ RUN apk update \
 # Install php 7
 RUN apk add php7 php7-session php7-fpm php7-json php7-zlib php7-xml php7-pdo php7-phar php7-openssl \
     php7-pdo_mysql php7-mysqli php7-mysqlnd \
-    php7-gd php7-mcrypt \
+    libwebp php7-gd php7-mcrypt \
     php7-curl php7-opcache php7-ctype  \
     php7-intl php7-bcmath php7-dom php7-xmlreader --update-cache --repository http://dl-4.alpinelinux.org/alpine/edge/testing/
 
