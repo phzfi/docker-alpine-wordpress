@@ -24,14 +24,6 @@ RUN apk add php7 php7-session php7-fpm php7-json php7-zlib php7-xml php7-pdo php
 # This adds all sorts of dependencies from dockerize magic
 ADD lib/phantomjs-dependencies.tar.gz /
 
-# Update phantomjs binary to 2.1.1
-ADD https://github.com/ariya/phantomjs/archive/2.1.1.tar.gz /tmp/
-RUN cd /tmp && \
-    tar -xjf phantomjs-2.1.1-linux-x86_64.tar.bz2 && \
-    mv phantomjs-2.1.1-linux-x86_64/bin/phantomjs /usr/local/bin/phantomjs && \
-    chmod +x /usr/local/bin/phantomjs && \
-    rm -r /tmp/*
-
 # Add S6-overlay to use S6 process manager
 # https://github.com/just-containers/s6-overlay/#the-docker-way
 ADD https://github.com/just-containers/s6-overlay/releases/download/v1.11.0.1/s6-overlay-amd64.tar.gz /tmp/
