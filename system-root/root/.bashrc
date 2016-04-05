@@ -83,8 +83,8 @@ alias la='ls -A'
 alias l='ls -CF'
 
 
-# root user has to be awesome so the default editor is vim
-export EDITOR=vim
+# Fuck this shit, I don't want to learn vim today or tomorrow
+export EDITOR=nano
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like

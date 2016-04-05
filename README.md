@@ -20,6 +20,15 @@ Your project should define web root in:
 ```
 This is the place where nginx will serve requests. This is compatible with [bedrock layout](https://github.com/roots/bedrock).
 
+## Cron jobs
+You can place cron file in `/data/code/tasks.cron`. This is symlinked to crond and run as user nginx.
+
+For example:
+```
+# do daily/weekly/monthly maintenance
+*       *       *       *       *       echo "test log from: $(whoami)..." >> /tmp/test.log
+```
+
 ## Environment Variables
 
 ### Database variables (mysql/mariadb)

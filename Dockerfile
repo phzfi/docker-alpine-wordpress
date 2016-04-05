@@ -85,6 +85,5 @@ RUN rm -rf /var/cache/apk/* && \
 WORKDIR /data/code
 
 EXPOSE 80
-VOLUME ["/data"]
 
 ENTRYPOINT ["/init"]
