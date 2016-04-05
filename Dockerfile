@@ -25,7 +25,7 @@ RUN apk add php7 php7-session php7-fpm php7-json php7-zlib php7-xml php7-pdo php
 ADD lib/phantomjs-dependencies.tar.gz /
 
 # Update phantomjs binary to 2.1.1
-ADD https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2 /tmp/
+ADD https://github.com/ariya/phantomjs/archive/2.1.1.tar.gz /tmp/
 RUN cd /tmp && \
     tar -xjf phantomjs-2.1.1-linux-x86_64.tar.bz2 && \
     mv phantomjs-2.1.1-linux-x86_64/bin/phantomjs /usr/local/bin/phantomjs && \
@@ -42,7 +42,6 @@ RUN ln -s /etc/php7 /etc/php && \
     ln -s /usr/bin/php7 /usr/bin/php && \
     ln -s /usr/sbin/php-fpm7 /usr/bin/php-fpm && \
     ln -s /usr/lib/php7 /usr/lib/php && \
-    sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php/php.ini && \
     sed -i 's/nginx:x:100:101:Linux User,,,:\/var\/www\/localhost\/htdocs:\/sbin\/nologin/nginx:x:100:101:Linux User,,,:\/var\/www\/localhost\/htdocs:\/bin\/bash/g' /etc/passwd && \
     sed -i 's/nginx:x:100:101:Linux User,,,:\/var\/www\/localhost\/htdocs:\/sbin\/nologin/nginx:x:100:101:Linux User,,,:\/var\/www\/localhost\/htdocs:\/bin\/bash/g' /etc/passwd-
 
