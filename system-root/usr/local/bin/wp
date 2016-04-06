@@ -2,11 +2,4 @@
 ##
 # WP-cli wrapper: Append path automatically so that user doesn't have to
 ##
-
-# If this is run by root switch to web
-if [ "$(id -u)" != "0" ]; then
-  su -s /bin/bash nginx -c '/usr/local/bin/wp-cli "$@" --path=$WP_CORE'
-else
-  # Else run wp-cli normally but with --path appended
-  /usr/local/bin/wp-cli "$@" --path=$WP_CORE
-fi
+/usr/local/bin/wp-cli "$@" --path=$WP_CORE --allow-root
