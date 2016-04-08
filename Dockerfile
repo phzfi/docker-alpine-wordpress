@@ -17,6 +17,13 @@ RUN apk add php7 php7-session php7-fpm php7-json php7-zlib php7-xml php7-pdo php
     php7-intl php7-bcmath php7-dom php7-xmlreader --update-cache --repository http://dl-4.alpinelinux.org/alpine/edge/testing/
 
 ##
+# Install ruby and integration testing tools
+##
+RUN apk add ruby ruby-nokogiri ruby-json build-base ruby-dev && \
+    gem install rspec rspec-retry poltergeist capybara --no-ri --no-rdoc && \
+    apk del build-base ruby-dev
+
+##
 # Install PhantomJS
 ##
 
