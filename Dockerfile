@@ -8,6 +8,8 @@ RUN apk update && \
     libssh2 curl libpng freetype libjpeg-turbo libgcc libxml2 libstdc++ icu-libs libltdl libmcrypt \
     # For mails
     msmtp \
+    # Set timezone according your location
+    tzdata \
     && apk add -u musl
 
 # Install php 7
@@ -66,7 +68,9 @@ ENV TERM="xterm" \
     # This is used by nginx and php-fpm
     WEB_ROOT="/data/code/web"\
     # This is used automatically by wp-cli
-    WP_CORE="/data/code/web/wp"
+    WP_CORE="/data/code/web/wp"\
+    # This can be overidden by you, it's just default for us
+    TZ="Europe/Helsinki"
 
 # Remove cache and tmp files
 RUN rm -rf /var/cache/apk/* && \

@@ -31,6 +31,12 @@ For example:
 
 ## Environment Variables
 
+### Timezone
+This sets timezone for the environment and php. See candidates here: http://php.net/manual/en/timezones.php
+```
+TZ     # Default: 'Europe/Helsinki'
+```
+
 ### Database variables (mysql/mariadb)
 
 ```
