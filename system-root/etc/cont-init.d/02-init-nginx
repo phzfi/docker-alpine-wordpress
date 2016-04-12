@@ -6,6 +6,7 @@ if [ ! -d /data/uploads ] ; then
   chown wordpress:web /data/uploads
 fi
 
+# Create log directory
 mkdir -p /data/log/nginx
 chown wordpress:web /data/log/nginx
 

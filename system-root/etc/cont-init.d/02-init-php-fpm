@@ -1,4 +1,22 @@
-#!/bin/sh
+#!/usr/bin/with-contenv bash
 
+# Craete log directory
 mkdir -p /data/log/php-fpm
 chown wordpress:web /data/log/php-fpm
+
+# Remove xdebug if this is production
+# In somecases even having xdebug installed increases loading times
+if [ "$WP_ENV" != "development" ]; then
+  rm /etc/php7/conf.d/xdebug.ini
+  rm /usr/lib/php7/modules/xdebug.so
+else
+  # In development create directory for xdebug profiling
+  mkdir -p /tmp/xdebug/
+  chown wordpress:web /tmp/xdebug/
+
+  # Set xdebug remote from docker env
+  # Default is dlite host machine ip
+  if [ -n "$XDEBUG_REMOTE_HOST" ]; then
+    echo "xdebug.remote_host=$XDEBUG_REMOTE_HOST" >> /etc/php7/conf.d/xdebug_remote.ini
+  fi
+fi
