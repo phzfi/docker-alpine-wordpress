@@ -20,8 +20,15 @@ Your project should define web root in:
 ```
 This is the place where nginx will serve requests. This is compatible with [bedrock layout](https://github.com/roots/bedrock).
 
+## User permissions
+You can use `WP_GID` and `WP_UID` env to change web user and group.
+
+If these are not set container will look for owner:group from files mounted in `/data/code/web/`.
+
+If these files are owned by root user or root group the container will automatically use 100:101 as permissions instead. This is so that we won't never run nginx and php-fpm as root.
+
 ## Cron jobs
-You can place cron file in `/data/code/tasks.cron`. This is symlinked to crond and run as user nginx.
+You can place cron file in `/data/code/tasks.cron`. This is symlinked to crond and run as user `wordpress`.
 
 For example:
 ```
