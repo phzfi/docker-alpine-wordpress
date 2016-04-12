@@ -37,6 +37,18 @@ This sets timezone for the environment and php. See candidates here: http://php.
 TZ     # Default: 'Europe/Helsinki'
 ```
 
+### Development/Production
+
+You can set different setup into container by changing `WP_ENV`. Using 'development' disables opcache and enables xdebug.
+```
+WP_ENV # Default: '' Options: development,production
+```
+
+If you want to use xdebug in remote you can set your ip address in `XDEBUG_REMOTE_HOST`.
+```
+XDEBUG_REMOTE_HOST # Default: ''
+```
+
 ### Database variables (mysql/mariadb)
 
 ```
