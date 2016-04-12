@@ -1,0 +1,4 @@
+#!/bin/sh
+
+mkdir -p /data/log/php-fpm
+chown wordpress:web /data/log/php-fpm

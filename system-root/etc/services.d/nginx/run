@@ -1,2 +1,4 @@
 #!/usr/bin/execlineb -P
-nginx
+
+# Run nginx processis as wordpress:web
+nginx -g "user wordpress web;"

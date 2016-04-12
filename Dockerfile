@@ -34,8 +34,8 @@ RUN ln -s /etc/php7 /etc/php && \
     ln -s /usr/bin/php7 /usr/bin/php && \
     ln -s /usr/sbin/php-fpm7 /usr/bin/php-fpm && \
     ln -s /usr/lib/php7 /usr/lib/php && \
-    sed -i 's/nginx:x:100:101:Linux User,,,:\/var\/www\/localhost\/htdocs:\/sbin\/nologin/nginx:x:100:101:Linux User,,,:\/var\/www\/localhost\/htdocs:\/bin\/bash/g' /etc/passwd && \
-    sed -i 's/nginx:x:100:101:Linux User,,,:\/var\/www\/localhost\/htdocs:\/sbin\/nologin/nginx:x:100:101:Linux User,,,:\/var\/www\/localhost\/htdocs:\/bin\/bash/g' /etc/passwd-
+    # Remove nginx user because we will create a user with correct permissions dynamically
+    deluser nginx
 
 ADD https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar /usr/local/bin/wp-cli
 
@@ -45,8 +45,8 @@ ADD https://getcomposer.org/installer /tmp/composer-setup.php
 RUN cd /tmp && \
     php composer-setup.php && \
     rm  composer-setup.php && \
-    mv composer.phar /usr/local/bin/composer && \
-    chmod +rx /usr/local/bin/composer && \
+    mv composer.phar /usr/local/bin/composer-script && \
+    chmod +rx /usr/local/bin/composer-script && \
     chmod +rx /usr/local/bin/wp-cli
 
 ##

@@ -1,4 +1,4 @@
-#!/usr/bin/with-contenv sh
+#!/usr/bin/with-contenv bash
 ##
 # Php uses msmtp binary to send email
 # This script changes /etc/msmtprc settings to change the used server
@@ -8,7 +8,7 @@
 # Replace msmtp 'from' field
 if [ -n "$SMTP_FROM" ]; then
   sed -i "s/^from.*$/from $SMTP_FROM/g" /etc/msmtprc
-elif [ wp core is-installed ]; then
+elif wp core is-installed; then
   # If SMTP_FROM was not setupped try to ask the domain from wordpress
   $smtp_from="no-reply@$(wp option get siteurl | sed 's/https\?:\/\///')"
   sed -i "s/^from.*$/from $smtp_from/g" /etc/msmtprc

@@ -1,2 +1,0 @@
-#!/bin/sh
-mkdir -p /data/log/php-fpm
