@@ -1,2 +1,17 @@
-#!/usr/bin/with-contenv sh
-exec /usr/bin/php-fpm --fpm-config /etc/php/php-fpm.conf --pid /var/run/php-fpm.pid
+#!/usr/bin/with-contenv bash
+
+case "$WP_ENV" in
+  development)
+    # Use development config for easier debugging
+    # This also disables opcache
+    echo "[php-fpm] Running php in development mode"
+    exec /usr/bin/php-fpm -c /etc/php/development.ini --fpm-config /etc/php/php-fpm.conf --pid /var/run/php-fpm.pid
+    ;;
+  *)
+    # Use production config otherwise
+    echo "[php-fpm] Running php in production mode"
+    exec /usr/bin/php-fpm -c /etc/php/production.ini --fpm-config /etc/php/php-fpm.conf --pid /var/run/php-fpm.pid
+    ;;
+esac
+
+
