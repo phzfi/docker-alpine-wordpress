@@ -11,11 +11,23 @@ chown wordpress:web /data/log/mail.log
 
 # Replace msmtp 'from' field
 if [ -n "$SMTP_FROM" ]; then
+
   sed -i "s/^from.*$/from $SMTP_FROM/g" /etc/msmtprc
+
 elif wp core is-installed; then
+
   # If SMTP_FROM was not setupped try to ask the domain from wordpress
-  smtp_from=no-reply@"$(wp option get siteurl | sed 's/https\?:\/\///'))"
+  # Also remove 'www.' if any
+  smtp_from=no-reply@"$(wp option get siteurl | sed 's/https\?:\/\///' | sed 's/^www.//')"
   sed -i "s/^from.*$/from $smtp_from/g" /etc/msmtprc
+
+elif [ -n "$WP_HOME" ]; then
+
+  # If SMTP_FROM was not setupped and wordpress is not installed/ready use WP_HOME variable
+  # Also remove 'www.' if any
+  smtp_from=no-reply@"$(echo $WP_HOME | sed 's/https\?:\/\///' | sed 's/^www.//')"
+  sed -i "s/^from.*$/from $smtp_from/g" /etc/msmtprc
+
 fi
 
 # Replace msmtp 'host' field
