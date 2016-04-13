@@ -54,8 +54,8 @@ ADD https://getcomposer.org/installer /tmp/composer-setup.php
 RUN cd /tmp && \
     php composer-setup.php && \
     rm  composer-setup.php && \
-    mv composer.phar /usr/local/bin/composer-script && \
-    chmod +rx /usr/local/bin/composer-script && \
+    mv composer.phar /usr/local/bin/composer && \
+    chmod +rx /usr/local/bin/composer && \
     chmod +rx /usr/local/bin/wp-cli
 
 ##
