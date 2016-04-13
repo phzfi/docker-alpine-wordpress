@@ -9,6 +9,10 @@
 touch /data/log/mail.log
 chown wordpress:web /data/log/mail.log
 
+# msmtp is really picky and won't run if permissions are not set correctly
+chown wordpress:web /etc/msmtprc
+chmod 0600 /etc/msmtprc
+
 # Replace msmtp 'from' field
 if [ -n "$SMTP_FROM" ]; then
 
