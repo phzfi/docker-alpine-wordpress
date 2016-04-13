@@ -5,6 +5,10 @@
 # Typically you can configure 1 postfix which can send email from all containers
 ##
 
+# Create log file with correct permissions so that mails are always logged
+touch /data/log/mail.log
+chown wordpress:web /data/log/mail.log
+
 # Replace msmtp 'from' field
 if [ -n "$SMTP_FROM" ]; then
   sed -i "s/^from.*$/from $SMTP_FROM/g" /etc/msmtprc
