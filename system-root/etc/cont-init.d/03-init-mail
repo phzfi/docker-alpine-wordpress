@@ -18,6 +18,10 @@ if [ -n "$SMTP_FROM" ]; then
 
   sed -i "s/^from.*$/from $SMTP_FROM/g" /etc/msmtprc
 
+elif [ -n "$MAIL_DOMAIN" ]; then
+
+  sed -i "s/^from.*$/from no-reply@$MAIL_DOMAIN/g" /etc/msmtprc
+
 elif wp core is-installed; then
 
   # If SMTP_FROM was not setupped try to ask the domain from wordpress
