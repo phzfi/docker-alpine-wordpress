@@ -62,7 +62,7 @@ fi
 # Create wordpress user
 if [ -n "$WP_UID" ] && [ -n "$WP_GID" ] ; then
   web_user="wordpress"
-  adduser -u $WP_UID -h $WEB_ROOT -G $web_group -S -D $web_user
+  adduser -u $WP_UID -h $PROJECT_ROOT -G $web_group -S -D $web_user
 else
   echo "ERROR: Please set correct permissions into /data/code/web" 1>&2
   exit 2
