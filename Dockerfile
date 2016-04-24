@@ -77,7 +77,9 @@ ENV TERM="xterm" \
     # This is used automatically by wp-cli
     WP_CORE="/data/code/web/wp"\
     # This can be overidden by you, it's just default for us
-    TZ="Europe/Helsinki"
+    TZ="Europe/Helsinki"\
+    # Update path with composer files
+    PATH="$PATH:/data/code/vendor/.bin:/root/.composer/bin"
 
 # Remove cache and tmp files
 RUN rm -rf /var/cache/apk/* && \
