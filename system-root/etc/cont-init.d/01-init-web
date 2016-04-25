@@ -67,3 +67,12 @@ else
   echo "ERROR: Please set correct permissions into /data/code/web" 1>&2
   exit 2
 fi
+
+# Create log directory for all parts of container to use
+# Create uploads directory if not exists
+if [ ! -d /data/log ] ; then
+  mkdir -p /data/log
+fi
+
+# Check that processes can write logs
+chown wordpress:web /data/log

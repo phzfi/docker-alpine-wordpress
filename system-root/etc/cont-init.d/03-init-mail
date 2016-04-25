@@ -5,10 +5,6 @@
 # Typically you can configure 1 postfix which can send email from all containers
 ##
 
-# Create log file with correct permissions so that mails are always logged
-touch /data/log/mail.log
-chown wordpress:web /data/log/mail.log
-
 # msmtp is really picky and won't run if permissions are not set correctly
 chown wordpress:web /etc/msmtprc
 chmod 0600 /etc/msmtprc

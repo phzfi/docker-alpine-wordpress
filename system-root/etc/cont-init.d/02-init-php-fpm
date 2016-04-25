@@ -1,8 +1,9 @@
 #!/usr/bin/with-contenv bash
 
 # Craete log directory
-mkdir -p /data/log/php-fpm
-chown wordpress:web /data/log/php-fpm
+mkdir -p /data/log/php
+touch /data/log/php/error.log
+chown -R wordpress:web /data/log/php
 
 # Remove xdebug if this is production
 # In somecases even having xdebug installed increases loading times
