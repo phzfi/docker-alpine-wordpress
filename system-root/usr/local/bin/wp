@@ -7,7 +7,7 @@ if [ "$(whoami)" = "root" ]; then
   # Gather all arguments because string interpolation doesn't work for $@
   args=""
   for i in "$@"; do
-      args="$args $i"
+      args="$args \"$i\""
   done
 
   # Run as wordpress user instead
