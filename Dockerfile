@@ -1,4 +1,4 @@
-FROM devgeniem/alpine-php-base:latest
+FROM devgeniem/alpine-php-base:1.0
 MAINTAINER Onni Hakala - Geniem Oy. <onni.hakala@geniem.com>
 
 ##
