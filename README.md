@@ -38,7 +38,6 @@ You can have custom nginx includes in your project mount `/data/code/nginx`.
 
 See more in our [wp-project template](https://github.com/devgeniem/wp-project).
 
-
 ## Cron jobs
 You can place cron file in `/data/code/tasks.cron`. This is symlinked to crond and run as user `wordpress`.
 
