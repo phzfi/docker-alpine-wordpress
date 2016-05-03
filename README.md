@@ -27,6 +27,18 @@ If these are not set container will look for owner:group from files mounted in `
 
 If these files are owned by root user or root group the container will automatically use 100:101 as permissions instead. This is so that we won't never run nginx and php-fpm as root.
 
+## Nginx includes
+You can have custom nginx includes in your project mount `/data/code/nginx`.
+
+**Include into http {} block:**
+`/data/code/nginx/server/*.conf`
+
+**Include into server {} block:**
+`/data/code/nginx/server/*.conf`
+
+See more in our [wp-project template](https://github.com/devgeniem/wp-project).
+
+
 ## Cron jobs
 You can place cron file in `/data/code/tasks.cron`. This is symlinked to crond and run as user `wordpress`.
 
