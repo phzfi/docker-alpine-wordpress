@@ -1,4 +1,4 @@
-FROM devgeniem/alpine-php-base:1.0.1
+FROM devgeniem/alpine-php-base
 MAINTAINER Onni Hakala - Geniem Oy. <onni.hakala@geniem.com>
 
 ##
@@ -9,10 +9,15 @@ ADD system-root/ /
 
 ENV TERM="xterm" \
     DB_HOST="" \
-    DB_PORT="" \
     DB_NAME="" \
     DB_USER=""\
     DB_PASSWORD=""\
+    # Set defaults which can be overriden
+    DB_PORT="3306" \
+    WP_REDIS_PORT="6379" \
+    WP_REDIS_DATABASE="0" \
+    WP_REDIS_SCHEME="tcp" \
+    WP_REDIS_CLIENT="pecl" \
     # This is for your project root
     PROJECT_ROOT="/data/code"\
     # This is used by nginx and php-fpm
@@ -20,9 +25,7 @@ ENV TERM="xterm" \
     # This is used automatically by wp-cli
     WP_CORE="/data/code/web/wp"\
     # This can be overidden by you, it's just default for us
-    TZ="Europe/Helsinki"\
-    # Update path with composer files
-    PATH="$PATH:/data/code/vendor/.bin:/root/.composer/bin"
+    TZ="Europe/Helsinki"
 
 # Set default path to project mountpoint
 WORKDIR /data/code
