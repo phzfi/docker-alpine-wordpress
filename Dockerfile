@@ -1,4 +1,4 @@
-FROM devgeniem/alpine-php-base:1.0.4
+FROM devgeniem/alpine-php-base:1.0.5
 MAINTAINER Onni Hakala - Geniem Oy. <onni.hakala@geniem.com>
 
 ##
@@ -18,6 +18,8 @@ ENV TERM="xterm" \
     WP_REDIS_DATABASE="0" \
     WP_REDIS_SCHEME="tcp" \
     WP_REDIS_CLIENT="pecl" \
+    # Cronlock is used to stop simultaneous cronjobs in clusterised environments
+    CRONLOCK_HOST="" \
     # This is for your project root
     PROJECT_ROOT="/data/code"\
     # This is used by nginx and php-fpm
