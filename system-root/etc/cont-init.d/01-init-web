@@ -1,5 +1,16 @@
 #!/usr/bin/with-contenv bash
 
+# Allow different project root with clever symlink
+if [ "$PROJECT_ROOT" != "/data/code" ]; then
+    echo "INFO: Changing project path using symlink /data/code -> $PROJECT_ROOT..."
+    # Check that data dir is created
+    mkdir -p /data
+    # Remove current dir if it exists
+    rmdir /data/code
+    # Create symlink to real project root
+    ln -sf $PROJECT_ROOT /data/code
+fi
+
 ##
 # Create wordpress useng with $UID and web group with $GID
 ##
