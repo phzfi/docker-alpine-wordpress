@@ -8,6 +8,17 @@ This is maintained repository. We use this project in production and recommend t
 ## Aren't you only supposed to run one process per container?
 We think that docker container should be small set of processes which provide one service rather than one clumsy process. This container uses [s6-overlay](https://github.com/just-containers/s6-overlay) in order to run php-fpm and nginx together.
 
+### Build instructions
+
+sudo docker build -t phzfi/alpine-wordpress .
+
+Test it out
+sudo docker run phzfi/alpine-wordpress echo "OK"
+
+Tag & Push
+sudo docker tag -f phzfi/alpine-wordpress phzfi/alpine-wordpress:latest
+sudo docker push phzfi/alpine-wordpress
+
 ## Container layout
 Mount your wordpress project into:
 ```
