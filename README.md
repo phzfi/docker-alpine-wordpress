@@ -16,7 +16,7 @@ Test it out
 sudo docker run phzfi/alpine-wordpress echo "OK"
 
 Tag & Push
-sudo docker tag -f phzfi/alpine-wordpress phzfi/alpine-wordpress:latest
+sudo docker tag phzfi/alpine-wordpress phzfi/alpine-wordpress:latest
 sudo docker push phzfi/alpine-wordpress
 
 ## Container layout

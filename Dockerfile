@@ -1,5 +1,5 @@
 FROM phzfi/alpine-php-base:latest
-MAINTAINER Antti Hätinen -  PHZ Full Stack Oy. <support@phz.fi>
+MAINTAINER Antti Hatinen -  PHZ Full Stack Oy. <support@phz.fi>
 
 ##
 # Add Project files like nginx and php-fpm processes and configs
