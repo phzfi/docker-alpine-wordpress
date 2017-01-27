@@ -7,6 +7,8 @@ MAINTAINER Antti Hatinen -  PHZ Full Stack Oy. <support@phz.fi>
 ##
 COPY system-root/ /
 
+RUN mkdir -p /data/code/web/wp
+
 # Update path with composer files + wpcs
 ENV PATH="$PATH:/data/code/vendor/.bin:/root/.composer/bin:/var/lib/wpcs/vendor/bin" \
     TERM="xterm" \
